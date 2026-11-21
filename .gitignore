@@ -4,3 +4,5 @@ __pycache__/
 target/
 logs/
 dbt_packages/
+
+dbt_weather/.user.yml

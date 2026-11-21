@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_city
+    columns:
+      - name: city_key
+        data_tests: [unique, not_null]
+      - name: city
+        data_tests: [unique, not_null]
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        data_tests: [unique, not_null]
+
+  - name: fact_weather_hourly
+    columns:
+      - name: city_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_city')
+              field: city_key
+      - name: date_key
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+      - name: temperature_c
+        data_tests: [not_null]
