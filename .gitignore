@@ -6,3 +6,5 @@ logs/
 dbt_packages/
 
 dbt_weather/.user.yml
+
+dbt_weather/.user.yml
