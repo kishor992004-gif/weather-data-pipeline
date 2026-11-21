@@ -1,0 +1,9 @@
+name: weather_dw
+version: "1.0.0"
+config-version: 2
+profile: weather_dw
+model-paths: ["models"]
+
+models:
+  weather_dw:
+    +materialized: table
