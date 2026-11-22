@@ -1,0 +1,6 @@
+venv/
+data/
+.git/
+dbt_weather/target/
+dbt_weather/logs/
+__pycache__/

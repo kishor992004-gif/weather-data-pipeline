@@ -1,8 +1,11 @@
+import os
+
 from sqlalchemy import create_engine, text
 
 from transform import transform
 
-DB_URL = "postgresql+psycopg2://de_user:de_pass@localhost:5432/weather_dw"
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_URL = f"postgresql+psycopg2://de_user:de_pass@{DB_HOST}:5432/weather_dw"
 
 
 def main():

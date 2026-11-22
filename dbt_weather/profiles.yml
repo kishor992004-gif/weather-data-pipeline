@@ -3,7 +3,7 @@ weather_dw:
   outputs:
     dev:
       type: postgres
-      host: localhost
+      host: "{{ env_var('DB_HOST', 'localhost') }}"
       user: de_user
       password: de_pass
       port: 5432

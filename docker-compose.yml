@@ -9,5 +9,23 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  airflow:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/project/src
+      - ./dbt_weather:/opt/airflow/project/dbt_weather
+      - ./data:/opt/airflow/project/data
+    command: standalone
+
 volumes:
   pgdata:
