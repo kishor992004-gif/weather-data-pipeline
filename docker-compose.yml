@@ -27,5 +27,17 @@ services:
       - ./data:/opt/airflow/project/data
     command: standalone
 
+  metabase:
+    image: metabase/metabase:latest
+    depends_on:
+      - postgres
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase_data:/metabase-data
+
 volumes:
   pgdata:
+  metabase_data:
